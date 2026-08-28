@@ -1,0 +1,10 @@
+CLASS zbp_r_xlwb_tmpl DEFINITION
+  PUBLIC
+  ABSTRACT
+  FINAL
+  FOR BEHAVIOR OF zr_xlwb_tmpl.
+ENDCLASS.
+
+CLASS zbp_r_xlwb_tmpl IMPLEMENTATION.
+ENDCLASS.
+
