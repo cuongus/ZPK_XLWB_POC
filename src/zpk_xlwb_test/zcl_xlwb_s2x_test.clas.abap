@@ -33,7 +33,9 @@ CLASS zcl_xlwb_s2x_test DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_s2x_test IMPLEMENTATION.
+
+CLASS ZCL_XLWB_S2X_TEST IMPLEMENTATION.
+
 
   METHOD wrap.
     rv_xml =
@@ -47,6 +49,7 @@ CLASS zcl_xlwb_s2x_test IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD conv.
     TRY.
         rv_xlsx = zcl_xlwb_ssml2xlsx=>convert( wrap( iv_body = iv_body iv_styles = iv_styles ) ).
@@ -54,6 +57,7 @@ CLASS zcl_xlwb_s2x_test IMPLEMENTATION.
         cl_abap_unit_assert=>fail( msg = |convert: { lx->get_text( ) }| ).
     ENDTRY.
   ENDMETHOD.
+
 
   METHOD part.
     DATA(lo_zip) = NEW cl_abap_zip( ).
@@ -65,6 +69,7 @@ CLASS zcl_xlwb_s2x_test IMPLEMENTATION.
       rv_text = cl_abap_conv_codepage=>create_in( )->convert( lv_raw ).
     ENDIF.
   ENDMETHOD.
+
 
   METHOD assert_has.
     cl_abap_unit_assert=>assert_true(
@@ -292,6 +297,4 @@ CLASS zcl_xlwb_s2x_test IMPLEMENTATION.
       )->get_cell( )->get_value( )->write_to( REF #( lv_text ) ).
     cl_abap_unit_assert=>assert_equals( act = lv_text exp = `ok` msg = `doc lai o A1` ).
   ENDMETHOD.
-
 ENDCLASS.
-

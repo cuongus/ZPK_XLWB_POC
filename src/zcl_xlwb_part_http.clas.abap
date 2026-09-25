@@ -15,7 +15,9 @@ CLASS zcl_xlwb_part_http DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_part_http IMPLEMENTATION.
+
+CLASS ZCL_XLWB_PART_HTTP IMPLEMENTATION.
+
 
   METHOD if_http_service_extension~handle_request.
     DATA(lv_spec) = request->get_form_field( `spec` ).
@@ -117,6 +119,4 @@ CLASS zcl_xlwb_part_http IMPLEMENTATION.
       `<code>zcl_xlwb_runtime=&gt;render( iv_form_name = ... ir_context = REF #( ls_data ) )</code>.</p>` &&
       `</body></html>`.
   ENDMETHOD.
-
 ENDCLASS.
-

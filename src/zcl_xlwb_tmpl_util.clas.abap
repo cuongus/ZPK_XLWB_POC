@@ -83,7 +83,9 @@ CLASS zcl_xlwb_tmpl_util DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_tmpl_util IMPLEMENTATION.
+
+CLASS ZCL_XLWB_TMPL_UTIL IMPLEMENTATION.
+
 
   METHOD scan_placeholders.
     DATA(lv_text) = to_text( iv_template = iv_template iv_engine = iv_engine ).
@@ -391,6 +393,4 @@ CLASS zcl_xlwb_tmpl_util IMPLEMENTATION.
     REPLACE ALL OCCURRENCES OF cl_abap_char_utilities=>newline IN rv_escaped WITH '\n'.
     REPLACE ALL OCCURRENCES OF cl_abap_char_utilities=>horizontal_tab IN rv_escaped WITH '\t'.
   ENDMETHOD.
-
 ENDCLASS.
-

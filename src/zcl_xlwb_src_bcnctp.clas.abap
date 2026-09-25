@@ -67,7 +67,9 @@ CLASS zcl_xlwb_src_bcnctp DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_src_bcnctp IMPLEMENTATION.
+
+CLASS ZCL_XLWB_SRC_BCNCTP IMPLEMENTATION.
+
 
   METHOD zif_xlwb_source~get_context.
     IF iv_keys IS INITIAL.
@@ -119,12 +121,14 @@ CLASS zcl_xlwb_src_bcnctp IMPLEMENTATION.
     rr_context = lr_ctx.
   ENDMETHOD.
 
+
   METHOD zif_xlwb_source~get_sample.
     DATA lr_ctx TYPE REF TO ty_ctx.
     CREATE DATA lr_ctx.
     lr_ctx->* = sample_ctx( ).
     rr_context = lr_ctx.
   ENDMETHOD.
+
 
   METHOD key_of.
     ASSIGN ir_keys->* TO FIELD-SYMBOL(<ls_keys>).
@@ -133,6 +137,7 @@ CLASS zcl_xlwb_src_bcnctp IMPLEMENTATION.
       rv_value = condense( |{ <lv_val> }| ).
     ENDIF.
   ENDMETHOD.
+
 
   METHOD build_ctx.
     rs_ctx-week  = |{ iv_week }|.
@@ -184,6 +189,7 @@ CLASS zcl_xlwb_src_bcnctp IMPLEMENTATION.
     ENDLOOP.
   ENDMETHOD.
 
+
   METHOD sample_ctx.
     " dữ liệu demo tĩnh theo đúng hình app (client test không có data thật)
     DATA lt_data TYPE zcl_get_bcnctp=>gty_bcnctp.
@@ -205,6 +211,7 @@ CLASS zcl_xlwb_src_bcnctp IMPLEMENTATION.
 
     rs_ctx = build_ctx( it_data = lt_data iv_week = 35 iv_year = 2026 iv_count = 4 ).
   ENDMETHOD.
+
 
   METHOD get_template.
     rv_template =
@@ -267,6 +274,7 @@ CLASS zcl_xlwb_src_bcnctp IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA(ls_ctx) = sample_ctx( ).
     rv_file = zcl_xlwb_runtime=>render_prefer_table(
@@ -274,6 +282,4 @@ CLASS zcl_xlwb_src_bcnctp IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_ctx ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

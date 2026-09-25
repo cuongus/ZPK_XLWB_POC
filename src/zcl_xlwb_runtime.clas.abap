@@ -126,7 +126,9 @@ CLASS zcl_xlwb_runtime DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_runtime IMPLEMENTATION.
+
+CLASS ZCL_XLWB_RUNTIME IMPLEMENTATION.
+
 
   METHOD render.
     DATA(ls_tmpl) = read_template( iv_form_name ).
@@ -368,6 +370,4 @@ CLASS zcl_xlwb_runtime IMPLEMENTATION.
       APPEND CONV string( ls-form_name ) TO rt_forms.
     ENDLOOP.
   ENDMETHOD.
-
 ENDCLASS.
-

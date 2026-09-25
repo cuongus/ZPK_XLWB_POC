@@ -180,7 +180,9 @@ CLASS zcl_xlwb_xlsx DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_xlsx IMPLEMENTATION.
+
+CLASS ZCL_XLWB_XLSX IMPLEMENTATION.
+
 
   METHOD render.
     mo_ctx  = NEW zcl_xlwb_ctx( ir_context ).
@@ -1291,6 +1293,4 @@ CLASS zcl_xlwb_xlsx IMPLEMENTATION.
       rv_col = `A`.
     ENDIF.
   ENDMETHOD.
-
 ENDCLASS.
-

@@ -44,7 +44,9 @@ CLASS zcl_xlwb_engine_test DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_engine_test IMPLEMENTATION.
+
+CLASS ZCL_XLWB_ENGINE_TEST IMPLEMENTATION.
+
 
   METHOD wrap.
     rv_xml =
@@ -57,6 +59,7 @@ CLASS zcl_xlwb_engine_test IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD render.
     TRY.
         rv_out = NEW zcl_xlwb_engine( )->render(
@@ -67,12 +70,14 @@ CLASS zcl_xlwb_engine_test IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 
+
   METHOD assert_contains.
     IF iv_out NS iv_sub.
       cl_abap_unit_assert=>fail(
         msg = |{ iv_msg } — missing '{ iv_sub }' in: { substring( val = iv_out off = 0 len = nmin( val1 = strlen( iv_out ) val2 = 1200 ) ) }| ).
     ENDIF.
   ENDMETHOD.
+
 
   METHOD count_of.
     DATA(lv_rest) = iv_out.
@@ -374,6 +379,7 @@ CLASS zcl_xlwb_engine_test IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 
+
   METHOD merge_same_value.
     " {{*mergesame:cont}} gop DOC cac dong lien tiep cung so container.
     " Du lieu: A A B C C C  -> 3 nhom: span 2, 1, 3
@@ -465,7 +471,4 @@ CLASS zcl_xlwb_engine_test IMPLEMENTATION.
       msg = `=1 nghia la khong gop -> khong sinh thuoc tinh` ).
     assert_contains( iv_out = lv_out iv_sub = `Khong gop` iv_msg = `text van con` ).
   ENDMETHOD.
-
-
 ENDCLASS.
-

@@ -16,12 +16,15 @@ CLASS zcx_xlwb DEFINITION
 ENDCLASS.
 
 
-CLASS zcx_xlwb IMPLEMENTATION.
+
+CLASS ZCX_XLWB IMPLEMENTATION.
+
 
   METHOD constructor ##ADT_SUPPRESS_GENERATION.
     super->constructor( previous = previous ).
     mv_text = iv_text.
   ENDMETHOD.
+
 
   METHOD get_text.
     IF mv_text IS NOT INITIAL.
@@ -30,6 +33,4 @@ CLASS zcx_xlwb IMPLEMENTATION.
       result = super->get_text( ).
     ENDIF.
   ENDMETHOD.
-
 ENDCLASS.
-

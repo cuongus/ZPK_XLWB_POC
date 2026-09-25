@@ -28,7 +28,9 @@ CLASS zcl_xlwb_ex02_labels DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex02_labels IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX02_LABELS IMPLEMENTATION.
+
 
   METHOD get_template.
     rv_template =
@@ -58,6 +60,7 @@ CLASS zcl_xlwb_ex02_labels IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA: BEGIN OF ls_context,
             labels TYPE ty_labels,
@@ -68,6 +71,4 @@ CLASS zcl_xlwb_ex02_labels IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

@@ -36,7 +36,9 @@ CLASS zcl_xlwb_xlsx2_test DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_xlsx2_test IMPLEMENTATION.
+
+CLASS ZCL_XLWB_XLSX2_TEST IMPLEMENTATION.
+
 
   METHOD build_template.
     DATA(lo_wa) = xco_cp_xlsx=>document->empty( )->write_access( ).
@@ -58,6 +60,7 @@ CLASS zcl_xlwb_xlsx2_test IMPLEMENTATION.
     rv_xlsx = lo_wa->get_file_content( ).
   ENDMETHOD.
 
+
   METHOD cell_of.
     DATA(lo_ra) = xco_cp_xlsx=>document->for_file_content( iv_xlsx )->read_access( ).
     DATA(lo_cell) = lo_ra->get_workbook( )->worksheet->at_position( iv_sheet )->cursor(
@@ -72,6 +75,7 @@ CLASS zcl_xlwb_xlsx2_test IMPLEMENTATION.
     rv_text = lv_text.
   ENDMETHOD.
 
+
   METHOD part_text.
     DATA(lo_zip) = NEW cl_abap_zip( ).
     lo_zip->load( iv_xlsx ).
@@ -82,6 +86,7 @@ CLASS zcl_xlwb_xlsx2_test IMPLEMENTATION.
       rv_text = cl_abap_conv_codepage=>create_in( codepage = 'UTF-8' )->convert( lv_raw ).
     ENDIF.
   ENDMETHOD.
+
 
   METHOD assert_has.
     cl_abap_unit_assert=>assert_true(
@@ -211,6 +216,4 @@ CLASS zcl_xlwb_xlsx2_test IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals( act = cell_of( iv_xlsx = lv_out iv_col = 'D' iv_row = 1 )
                                         exp = `END` msg = `o sau vung lap dich dung cot` ).
   ENDMETHOD.
-
 ENDCLASS.
-

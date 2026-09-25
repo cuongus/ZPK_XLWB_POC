@@ -40,20 +40,25 @@ CLASS zcl_xlwb_runtime_test DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_runtime_test IMPLEMENTATION.
+
+CLASS ZCL_XLWB_RUNTIME_TEST IMPLEMENTATION.
+
 
   METHOD class_setup.
     mo_osql = cl_osql_test_environment=>create( VALUE #( ( 'ZXLWB_TMPL' ) ) ).
   ENDMETHOD.
 
+
   METHOD class_teardown.
     mo_osql->destroy( ).
   ENDMETHOD.
+
 
   METHOD teardown.
     mo_osql->clear_doubles( ).
     zcl_xlwb_runtime=>clear_cache( ).
   ENDMETHOD.
+
 
   METHOD ssml_template.
     rv_xml =
@@ -67,6 +72,7 @@ CLASS zcl_xlwb_runtime_test IMPLEMENTATION.
       `<Row><Cell><Data ss:Type="String">{{#items}}{{matnr}}{{/items}}</Data></Cell></Row>` &&
       `</Table></Worksheet></Workbook>`.
   ENDMETHOD.
+
 
   METHOD fallback_template.
     rv_x = cl_abap_conv_codepage=>create_out( )->convert(
@@ -217,6 +223,7 @@ CLASS zcl_xlwb_runtime_test IMPLEMENTATION.
                                         msg = `tên file preview` ).
   ENDMETHOD.
 
+
   METHOD prefer_uses_table.
     " Co ban ghi trong bang -> phai dung bang, KHONG dung template du phong
     insert_double( iv_engine = 'SSML' ).
@@ -273,7 +280,4 @@ CLASS zcl_xlwb_runtime_test IMPLEMENTATION.
                                         exp = to_lower( CONV string( c_form ) ) && `.xlsx`
                                         msg = `ten file suy ra tu form name` ).
   ENDMETHOD.
-
-
 ENDCLASS.
-

@@ -32,7 +32,9 @@ CLASS zcl_xlwb_demo_files DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_demo_files IMPLEMENTATION.
+
+CLASS ZCL_XLWB_DEMO_FILES IMPLEMENTATION.
+
 
   METHOD get_logo_asset.
     TRY.
@@ -296,6 +298,4 @@ CLASS zcl_xlwb_demo_files IMPLEMENTATION.
       ENDIF.
     ENDIF.
   ENDMETHOD.
-
 ENDCLASS.
-

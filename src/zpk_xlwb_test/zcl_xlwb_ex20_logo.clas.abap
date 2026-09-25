@@ -43,7 +43,9 @@ CLASS zcl_xlwb_ex20_logo DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex20_logo IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX20_LOGO IMPLEMENTATION.
+
 
   METHOD get_template.
     DATA(lo_wa) = xco_cp_xlsx=>document->empty( )->write_access( ).
@@ -85,6 +87,4 @@ CLASS zcl_xlwb_ex20_logo IMPLEMENTATION.
                 iv_fallback_engine   = `XLSX`
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

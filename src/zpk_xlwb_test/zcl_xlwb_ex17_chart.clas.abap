@@ -25,7 +25,9 @@ CLASS zcl_xlwb_ex17_chart DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex17_chart IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX17_CHART IMPLEMENTATION.
+
 
   METHOD get_template.
     rv_template =
@@ -55,6 +57,7 @@ CLASS zcl_xlwb_ex17_chart IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA: BEGIN OF ls_context,
             months TYPE ty_months,
@@ -65,6 +68,4 @@ CLASS zcl_xlwb_ex17_chart IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

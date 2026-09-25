@@ -37,7 +37,9 @@ CLASS zcl_xlwb_ex16_advanced DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex16_advanced IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX16_ADVANCED IMPLEMENTATION.
+
 
   METHOD to_chars.
     DATA(lv_n) = COND i( WHEN iv_len > 0 THEN iv_len ELSE strlen( iv_text ) ).
@@ -49,6 +51,7 @@ CLASS zcl_xlwb_ex16_advanced IMPLEMENTATION.
                          ELSE `` ) ) TO rt_chars.
     ENDDO.
   ENDMETHOD.
+
 
   METHOD get_template.
     rv_template =
@@ -94,6 +97,7 @@ CLASS zcl_xlwb_ex16_advanced IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA: BEGIN OF ls_context,
             chars       TYPE ty_chars,
@@ -115,6 +119,4 @@ CLASS zcl_xlwb_ex16_advanced IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

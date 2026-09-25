@@ -62,7 +62,9 @@ CLASS zcl_xlwb_ex21_packlist DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex21_packlist IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX21_PACKLIST IMPLEMENTATION.
+
 
   METHOD get_template.
     rv_xml = `<?xml version="1.0"?>&#10;<?mso-application progid="Excel.Sheet"?>&#10;<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:o`.
@@ -335,6 +337,4 @@ CLASS zcl_xlwb_ex21_packlist IMPLEMENTATION.
         out->write( |Loi render: { lx->get_text( ) }| ).
     ENDTRY.
   ENDMETHOD.
-
 ENDCLASS.
-

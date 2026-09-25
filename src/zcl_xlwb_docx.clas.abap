@@ -139,7 +139,9 @@ CLASS zcl_xlwb_docx DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_docx IMPLEMENTATION.
+
+CLASS ZCL_XLWB_DOCX IMPLEMENTATION.
+
 
   METHOD render.
     IF ir_context IS INITIAL.
@@ -747,6 +749,4 @@ CLASS zcl_xlwb_docx IMPLEMENTATION.
 
     rv_docx = lo_zip->save( ).
   ENDMETHOD.
-
 ENDCLASS.
-

@@ -38,7 +38,9 @@ CLASS zcl_xlwb_examples_test DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_examples_test IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EXAMPLES_TEST IMPLEMENTATION.
+
 
   METHOD as_text.
     " output runtime giờ là .xlsx (zip): nối text mọi part XML để assert;
@@ -62,6 +64,7 @@ CLASS zcl_xlwb_examples_test IMPLEMENTATION.
       ENDIF.
     ENDLOOP.
   ENDMETHOD.
+
 
   METHOD assert_has.
     cl_abap_unit_assert=>assert_true( act = xsdbool( iv_text CS iv_sub ) msg = iv_msg ).
@@ -497,6 +500,4 @@ CLASS zcl_xlwb_examples_test IMPLEMENTATION.
       CATCH zcx_xlwb.
     ENDTRY.
   ENDMETHOD.
-
 ENDCLASS.
-

@@ -44,7 +44,9 @@ CLASS zcl_xlwb_ex14_tree DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex14_tree IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX14_TREE IMPLEMENTATION.
+
 
   METHOD to_nested.
     LOOP AT it_nodes INTO DATA(ls_root) WHERE parent_key IS INITIAL.
@@ -55,6 +57,7 @@ CLASS zcl_xlwb_ex14_tree IMPLEMENTATION.
       APPEND ls_group TO rt_groups.
     ENDLOOP.
   ENDMETHOD.
+
 
   METHOD get_template.
     rv_template =
@@ -84,6 +87,7 @@ CLASS zcl_xlwb_ex14_tree IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA: BEGIN OF ls_context,
             groups TYPE ty_groups,
@@ -94,6 +98,4 @@ CLASS zcl_xlwb_ex14_tree IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

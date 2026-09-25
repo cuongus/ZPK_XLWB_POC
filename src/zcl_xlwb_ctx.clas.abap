@@ -104,7 +104,9 @@ CLASS zcl_xlwb_ctx DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ctx IMPLEMENTATION.
+
+CLASS ZCL_XLWB_CTX IMPLEMENTATION.
+
 
   METHOD constructor.
     IF ir_context IS INITIAL.
@@ -113,6 +115,7 @@ CLASS zcl_xlwb_ctx IMPLEMENTATION.
     APPEND VALUE ty_frame( data = ir_context ) TO mt_frames.
   ENDMETHOD.
 
+
   METHOD push.
     APPEND VALUE ty_frame( data  = ir_data
                            index = iv_index
@@ -120,6 +123,7 @@ CLASS zcl_xlwb_ctx IMPLEMENTATION.
                            kind  = iv_kind
                            table = ir_table ) TO mt_frames.
   ENDMETHOD.
+
 
   METHOD pop.
     IF lines( mt_frames ) > 1.
@@ -414,6 +418,4 @@ CLASS zcl_xlwb_ctx IMPLEMENTATION.
                                 ELSE |{ CONV decfloat34( lv_sum / lv_cnt ) NUMBER = RAW }| ).
     ENDCASE.
   ENDMETHOD.
-
 ENDCLASS.
-

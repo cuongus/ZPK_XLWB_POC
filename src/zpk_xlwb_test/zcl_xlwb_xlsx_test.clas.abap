@@ -42,7 +42,9 @@ CLASS zcl_xlwb_xlsx_test DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_xlsx_test IMPLEMENTATION.
+
+CLASS ZCL_XLWB_XLSX_TEST IMPLEMENTATION.
+
 
   METHOD logo_base64.
     rv_b64 = `iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==`.
@@ -267,6 +269,4 @@ CLASS zcl_xlwb_xlsx_test IMPLEMENTATION.
       exp = `l2`
       msg = `second loop line` ).
   ENDMETHOD.
-
 ENDCLASS.
-

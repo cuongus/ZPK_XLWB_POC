@@ -22,7 +22,9 @@ CLASS zcl_xlwb_run DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_run IMPLEMENTATION.
+
+CLASS ZCL_XLWB_RUN IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
 
@@ -141,6 +143,4 @@ CLASS zcl_xlwb_run IMPLEMENTATION.
     ENDTRY.
 
   ENDMETHOD.
-
 ENDCLASS.
-

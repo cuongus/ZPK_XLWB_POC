@@ -62,7 +62,9 @@ CLASS zcl_xlwb_ctx_json DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ctx_json IMPLEMENTATION.
+
+CLASS ZCL_XLWB_CTX_JSON IMPLEMENTATION.
+
 
   METHOD parse.
     DATA(lo) = NEW zcl_xlwb_ctx_json( ).
@@ -429,6 +431,4 @@ CLASS zcl_xlwb_ctx_json IMPLEMENTATION.
                                                 THEN 29 ELSE strlen( rv_name ) ) ).
     ENDIF.
   ENDMETHOD.
-
 ENDCLASS.
-

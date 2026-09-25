@@ -6,7 +6,10 @@ CLASS zcl_xlwb_zip_probe DEFINITION
     METHODS base64_to_xstring FOR TESTING.
 ENDCLASS.
 
-CLASS zcl_xlwb_zip_probe IMPLEMENTATION.
+
+
+CLASS ZCL_XLWB_ZIP_PROBE IMPLEMENTATION.
+
 
   METHOD zip_roundtrip.
     DATA(lo_zip) = NEW cl_abap_zip( ).
@@ -25,6 +28,7 @@ CLASS zcl_xlwb_zip_probe IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals( act = lines( lo_in->files ) exp = 1 msg = `files table` ).
   ENDMETHOD.
 
+
   METHOD base64_to_xstring.
     " 1x1 transparent PNG, pattern lay tu zcl_qm_export_logo
     DATA(lv_png) = xco_cp=>string(
@@ -36,6 +40,4 @@ CLASS zcl_xlwb_zip_probe IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals(
       act = |{ lv_magic }| exp = `89504E47` msg = `PNG magic bytes` ).
   ENDMETHOD.
-
 ENDCLASS.
-

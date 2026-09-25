@@ -33,7 +33,9 @@ CLASS zcl_xlwb_tmpl_seed DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_tmpl_seed IMPLEMENTATION.
+
+CLASS ZCL_XLWB_TMPL_SEED IMPLEMENTATION.
+
 
   METHOD add.
     DATA ls TYPE zxlwb_tmpl.
@@ -59,9 +61,11 @@ CLASS zcl_xlwb_tmpl_seed IMPLEMENTATION.
     APPEND ls TO mt_rows.
   ENDMETHOD.
 
+
   METHOD utf8.
     rv_bin = cl_abap_conv_codepage=>create_out( )->convert( iv_text ).
   ENDMETHOD.
+
 
   METHOD build.
     CLEAR mt_rows.
@@ -139,6 +143,7 @@ CLASS zcl_xlwb_tmpl_seed IMPLEMENTATION.
          iv_template = utf8( NEW zcl_xlwb_src_order( )->get_template( ) ) ).
   ENDMETHOD.
 
+
   METHOD load.
     build( ).
     MODIFY zxlwb_tmpl FROM TABLE @mt_rows.
@@ -146,6 +151,7 @@ CLASS zcl_xlwb_tmpl_seed IMPLEMENTATION.
     COMMIT WORK AND WAIT.
     zcl_xlwb_runtime=>clear_cache( ).
   ENDMETHOD.
+
 
   METHOD if_oo_adt_classrun~main.
     DATA(lv_count) = load( ).
@@ -165,6 +171,4 @@ CLASS zcl_xlwb_tmpl_seed IMPLEMENTATION.
     out->write( |—| ).
     out->write( |Tiếp theo: mở app XLWB Examples, bấm "Gen lại tất cả" để file mẫu render theo template trong bảng.| ).
   ENDMETHOD.
-
 ENDCLASS.
-

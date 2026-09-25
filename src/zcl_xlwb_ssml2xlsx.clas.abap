@@ -152,7 +152,9 @@ CLASS zcl_xlwb_ssml2xlsx DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ssml2xlsx IMPLEMENTATION.
+
+CLASS ZCL_XLWB_SSML2XLSX IMPLEMENTATION.
+
 
   METHOD convert.
     DATA(lo) = NEW zcl_xlwb_ssml2xlsx( ).
@@ -1045,6 +1047,4 @@ CLASS zcl_xlwb_ssml2xlsx IMPLEMENTATION.
     io_zip->add( name    = iv_name
                  content = cl_abap_conv_codepage=>create_out( )->convert( iv_text ) ).
   ENDMETHOD.
-
 ENDCLASS.
-

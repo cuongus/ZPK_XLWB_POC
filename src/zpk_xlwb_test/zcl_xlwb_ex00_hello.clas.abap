@@ -17,7 +17,9 @@ CLASS zcl_xlwb_ex00_hello DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex00_hello IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX00_HELLO IMPLEMENTATION.
+
 
   METHOD get_template.
     rv_template =
@@ -34,6 +36,7 @@ CLASS zcl_xlwb_ex00_hello IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA: BEGIN OF ls_context,
             message TYPE string,
@@ -45,6 +48,4 @@ CLASS zcl_xlwb_ex00_hello IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

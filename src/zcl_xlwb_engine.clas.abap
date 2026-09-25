@@ -109,7 +109,9 @@ CLASS zcl_xlwb_engine DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_engine IMPLEMENTATION.
+
+CLASS ZCL_XLWB_ENGINE IMPLEMENTATION.
+
 
   METHOD render.
     IF ir_context IS INITIAL.
@@ -613,20 +615,6 @@ CLASS zcl_xlwb_engine IMPLEMENTATION.
   ENDMETHOD.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   METHOD render_free_nodes.
     IF io_node->get_type( ) = if_ixml_node=>co_node_text.
       DATA(lv_text) = io_node->get_value( ).
@@ -728,6 +716,4 @@ CLASS zcl_xlwb_engine IMPLEMENTATION.
         value = |{ lv_pos }| ).
     ENDLOOP.
   ENDMETHOD.
-
 ENDCLASS.
-

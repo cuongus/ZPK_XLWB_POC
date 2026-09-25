@@ -32,7 +32,9 @@ CLASS zcl_xlwb_demo_load DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_demo_load IMPLEMENTATION.
+
+CLASS ZCL_XLWB_DEMO_LOAD IMPLEMENTATION.
+
 
   METHOD add.
     DATA ls TYPE zxlwb_demo.
@@ -1097,9 +1099,6 @@ CLASS zcl_xlwb_demo_load IMPLEMENTATION.
   ENDMETHOD.
 
 
-
-
-
   METHOD load.
     build( ).
     DELETE FROM zxlwb_demo.
@@ -1129,6 +1128,4 @@ CLASS zcl_xlwb_demo_load IMPLEMENTATION.
                   |template: { lv_src WIDTH = 11 }  { ls-title }| ).
     ENDLOOP.
   ENDMETHOD.
-
 ENDCLASS.
-

@@ -44,7 +44,9 @@ CLASS zcl_xlwb_ex11_multilevel DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex11_multilevel IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX11_MULTILEVEL IMPLEMENTATION.
+
 
   METHOD get_template.
     rv_template =
@@ -97,6 +99,7 @@ CLASS zcl_xlwb_ex11_multilevel IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA: BEGIN OF ls_context,
             routes TYPE ty_routes,
@@ -107,6 +110,4 @@ CLASS zcl_xlwb_ex11_multilevel IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

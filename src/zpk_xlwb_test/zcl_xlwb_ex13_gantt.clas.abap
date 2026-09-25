@@ -50,7 +50,9 @@ CLASS zcl_xlwb_ex13_gantt DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex13_gantt IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX13_GANTT IMPLEMENTATION.
+
 
   METHOD get_template.
     rv_template =
@@ -98,6 +100,7 @@ CLASS zcl_xlwb_ex13_gantt IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA(ls_context) = is_gantt.
     rv_file = zcl_xlwb_runtime=>render_prefer_table(
@@ -105,6 +108,4 @@ CLASS zcl_xlwb_ex13_gantt IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

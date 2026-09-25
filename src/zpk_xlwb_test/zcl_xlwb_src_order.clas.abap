@@ -41,7 +41,9 @@ CLASS zcl_xlwb_src_order DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_src_order IMPLEMENTATION.
+
+CLASS ZCL_XLWB_SRC_ORDER IMPLEMENTATION.
+
 
   METHOD zif_xlwb_source~get_context.
     DATA(lv_orderno) = `PO-2026-DEMO`.
@@ -67,12 +69,14 @@ CLASS zcl_xlwb_src_order IMPLEMENTATION.
     rr_context = lr_order.
   ENDMETHOD.
 
+
   METHOD zif_xlwb_source~get_sample.
     DATA lr_order TYPE REF TO ty_order.
     CREATE DATA lr_order.
     lr_order->* = build_order( `PO-2026-DEMO` ).
     rr_context = lr_order.
   ENDMETHOD.
+
 
   METHOD build_order.
     rs_order = VALUE ty_order(
@@ -83,6 +87,7 @@ CLASS zcl_xlwb_src_order IMPLEMENTATION.
         ( pos = 10 matnr = `SLAB-WHITE-3CM` qty = 20 amount = '2100.00' )
         ( pos = 20 matnr = `SLAB-GREY-2CM`  qty = 15 amount = '1327.50' ) ) ).
   ENDMETHOD.
+
 
   METHOD get_template.
     rv_template =
@@ -121,12 +126,11 @@ CLASS zcl_xlwb_src_order IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     rv_file = zcl_xlwb_runtime=>render_prefer_table(
                 iv_form_name         = `XLWB_EX22_SOURCE`
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = zif_xlwb_source~get_sample( ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

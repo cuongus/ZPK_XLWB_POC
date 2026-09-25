@@ -47,7 +47,9 @@ CLASS zcl_xlwb_ex09_dyntable DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_ex09_dyntable IMPLEMENTATION.
+
+CLASS ZCL_XLWB_EX09_DYNTABLE IMPLEMENTATION.
+
 
   METHOD rnd.
     " LCG don gian, seed tu timestamp — du "ngau nhien" cho demo,
@@ -62,6 +64,7 @@ CLASS zcl_xlwb_ex09_dyntable IMPLEMENTATION.
     mv_seed = ( mv_seed * 1103515245 + 12345 ) MOD 2147483648.
     rv_val = iv_min + CONV i( mv_seed MOD CONV int8( iv_max - iv_min + 1 ) ).
   ENDMETHOD.
+
 
   METHOD get_template.
     rv_template =
@@ -100,6 +103,7 @@ CLASS zcl_xlwb_ex09_dyntable IMPLEMENTATION.
       `</Workbook>`.
   ENDMETHOD.
 
+
   METHOD get_file.
     DATA: BEGIN OF ls_context,
             rows_n    TYPE i,
@@ -136,6 +140,4 @@ CLASS zcl_xlwb_ex09_dyntable IMPLEMENTATION.
                 iv_fallback_template = cl_abap_conv_codepage=>create_out( )->convert( get_template( ) )
                 ir_context           = REF #( ls_context ) )-content.
   ENDMETHOD.
-
 ENDCLASS.
-

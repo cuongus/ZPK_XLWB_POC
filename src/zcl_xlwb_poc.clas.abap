@@ -21,15 +21,19 @@ CLASS zcl_xlwb_poc DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_xlwb_poc IMPLEMENTATION.
+
+CLASS ZCL_XLWB_POC IMPLEMENTATION.
+
 
   METHOD col.
     ro_col = xco_cp_xlsx=>coordinate->for_alphabetic_value( iv_col ).
   ENDMETHOD.
 
+
   METHOD row.
     ro_row = xco_cp_xlsx=>coordinate->for_numeric_value( iv_row ).
   ENDMETHOD.
+
 
   METHOD build_template.
     " "Template": bold title + merge A1:C1 + label B2 (simulates XCO-compatible template)
@@ -52,6 +56,7 @@ CLASS zcl_xlwb_poc IMPLEMENTATION.
 
     rv_xlsx = lo_wa->get_file_content( ).
   ENDMETHOD.
+
 
   METHOD roundtrip_template.
     DATA(lv_template) = build_template( ).
@@ -116,6 +121,4 @@ CLASS zcl_xlwb_poc IMPLEMENTATION.
       act = lo_ra->get_workbook( )->worksheet->for_name( `DA` )->exists( )
       msg = `dynamic sheet DA missing` ).
   ENDMETHOD.
-
 ENDCLASS.
-
